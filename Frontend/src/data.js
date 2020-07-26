@@ -1,6 +1,7 @@
 export default  {
     products: [
         {
+        _id:'1',
         name:'Slim Shirt',
         category:'Shirts',
         image:'/images/d1.jpg',
@@ -10,6 +11,7 @@ export default  {
         numReviews:10
     },
     {
+        _id:'2',
         name:'Fit Shirt',
         category:'Shirts',
         image:'/images/d1.jpg',
@@ -19,6 +21,7 @@ export default  {
         numReviews:4
     },
     {
+        _id:'3',
         name:'Slim Pants',
         category:'Pants',
         image:'/images/d1.jpg',
@@ -28,6 +31,7 @@ export default  {
         numReviews:6
     },
     {
+        _id:'4',
         name:'Flesh Pants',
         category:'Pants',
         image:'/images/d1.jpg',
@@ -35,15 +39,6 @@ export default  {
         brand:'Misozi',
         rating: 9.5,
         numReviews:20
-    },
-    {
-        name:'Flesh Shirt',
-        category:'Shirts',
-        image:'/images/d1.jpg',
-        price:60,
-        brand:'Misozi',
-        rating: 4.5,
-        numReviews:5
     }
 ]
 }
