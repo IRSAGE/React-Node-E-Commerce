@@ -34,10 +34,13 @@ color: #fff;
 font-size: 2.5rem;
 font-weight: bold;
 text-decoration: none;
+
 }
 .header-links a{
   color: #fff;
   text-decoration: none;
+  padding: 1.5rem;
+  font-weight: 600;
 }
 .header-links a:hover{
   color: #ff8000;
@@ -81,8 +84,9 @@ a:hover{
   font-weight: bold;
 }
 .product-brand{
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #808080;
+  font-weight: bold;
 }
 .product-price{
   font-size: 2rem;
@@ -120,9 +124,11 @@ a:hover{
   font-size: 2rem;
   padding-top: 0;
   cursor: pointer;
+  color: #ff8000;
   position: absolute;
   right: .5rem;
   top:1.5rem;
+  text-align: center;
 }
 /* Product Details */
 .details{
