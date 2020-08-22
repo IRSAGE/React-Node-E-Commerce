@@ -8,7 +8,8 @@ export default  {
         price:60,
         brand:'Misozi',
         rating: 4.5,
-        numReviews:10
+        numReviews:10,
+        countInStock: 6
     },
     {
         _id:'2',
@@ -18,7 +19,8 @@ export default  {
         price:40,
         brand:'Misozi',
         rating: 3.5,
-        numReviews:4
+        numReviews:4,
+        countInStock: 5
     },
     {
         _id:'3',
@@ -28,7 +30,8 @@ export default  {
         price:80,
         brand:'Misozi',
         rating: 5.5,
-        numReviews:6
+        numReviews:6,
+        countInStock: 8
     },
     {
         _id:'4',
@@ -38,7 +41,8 @@ export default  {
         price:20,
         brand:'Misozi',
         rating: 9.5,
-        numReviews:20
+        numReviews:20,
+        countInStock: 4
     }
 ]
 }
