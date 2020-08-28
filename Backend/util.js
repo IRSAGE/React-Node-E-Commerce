@@ -12,27 +12,30 @@ const getToken = (user) =>{
     })
 }
 
-const isAuth =(req,res,next) =>{
-    const token =req.headers.authorization;
+const isAuth = (req, res, next) => {
+    const token = req.headers.authorization;
+  
     if (token) {
-        const  onlyToken = token.slice(7,token.length);
-        jwt.verify(onlyToken,config.JWT_SECRET,(err,decode) =>{
-            if(err){
-                return res.status(401).send({msg:'Invalid Token'});
-            }
-        })
-        req.user = token;
+      const onlyToken = token.slice(7, token.length);
+      jwt.verify(onlyToken, config.JWT_SECRET, (err, decode) => {
+        if (err) {
+          return res.status(401).send({ message: 'Invalid Token' });
+        }
+        req.user = decode;
         next();
-        return
+        return;
+      });
+    } else {
+      return res.status(401).send({ message: 'Token is not supplied.' });
     }
-    return res.status(401).send({msg:'Provide Token...'});
-}
-
-const  isAdmin = (req,res,next) =>{
+  };
+  
+  const isAdmin = (req, res, next) => {
+    console.log(req.user);
     if (req.user && req.user.isAdmin) {
-        return next();
+      return next();
     }
-    return res.status(401).send({msg:'You Are Not An Admin'});
-}
+    return res.status(401).send({ message: 'Admin Token is not valid.' });
+  };
 
  export {getToken,isAdmin,isAuth}
