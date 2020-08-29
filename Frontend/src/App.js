@@ -27,7 +27,7 @@ function App() {
             
             <div className="brand">
                 <button onClick={openMenu}>&#9776;</button>
-                <Link to="/">Amazone</Link>
+                <Link to="/">E-Commerce</Link>
           </div>
             <div className="header-links">
             <Link to="/cart">Cart</Link>
@@ -55,7 +55,7 @@ function App() {
             </div>
         </main>
         <footer className="footer">
-            All Right Reserved.
+            All Right Reserved...By  @IR~SAGE
         </footer>
     </div>
     </BrowserRouter>
