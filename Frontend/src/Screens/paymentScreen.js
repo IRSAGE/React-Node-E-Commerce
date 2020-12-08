@@ -1,18 +1,17 @@
-import React, {useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { savePayment } from '../actions/cartActions';
-import CheckoutSteps from '../Components/checkoutSteps';
-
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { savePayment } from "../actions/cartActions";
+import CheckoutSteps from "../Components/checkoutSteps";
 
 function PaymentScreen(props) {
-  const [paymentMethod, setPaymentMethod] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState("");
 
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(savePayment({ paymentMethod }));
-    props.history.push('placeorder');
+    props.history.push("placeorder");
   };
   return (
     <div>
@@ -26,14 +25,24 @@ function PaymentScreen(props) {
 
             <li>
               <div>
-                <input type="radio" name="paymentMethod" id="paymentMethod" value="paypal" onChange={(e) => setPaymentMethod(e.target.value)}
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  id="paymentMethod"
+                  value="paypal"
+                  onChange={(e) => setPaymentMethod(e.target.value)}
                 ></input>
                 <label for="paymentMethod">Paypal</label>
               </div>
             </li>
             <li>
               <div>
-                <input type="radio" name="paymentMethod" id="paymentMethod" value="momopay" onChange={(e) => setPaymentMethod(e.target.value)}
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  id="paymentMethod"
+                  value="momopay"
+                  onChange={(e) => setPaymentMethod(e.target.value)}
                 ></input>
                 <label for="paymentMethod">Momo Pay</label>
               </div>

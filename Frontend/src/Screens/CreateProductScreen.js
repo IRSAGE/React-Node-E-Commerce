@@ -1,38 +1,48 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { saveProduct, listProducts, deleteProduct } from '../actions/productActions';
-
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  saveProduct,
+  listProducts,
+  deleteProduct,
+} from "../actions/productActions";
 
 function ProductsScreen(props) {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [id, setId] = useState("");
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [image, setImage] = useState("");
+  const [brand, setBrand] = useState("");
+  const [category, setCategory] = useState("");
+  const [countInStock, setCountInStock] = useState("");
+  const [description, setDescription] = useState("");
+  const productList = useSelector((state) => state.productList);
+  const { loading, products, error } = productList;
+  const productSave = useSelector((state) => state.productSave);
+  const {
+    loading: loadingSave,
+    success: successSave,
+    errorSave: errorSave,
+  } = productSave;
+  const productDelete = useSelector((state) => state.productDelete);
+  const {
+    loading: loadingDelete,
+    success: successDelete,
+    errorSave: errorDelete,
+  } = productDelete;
+  const dispatch = useDispatch();
 
-    const [modalVisible, setModalVisible] = useState(false);
-    const [id, setId] = useState('');
-    const [name,setName] = useState('');
-    const [price,setPrice] = useState('');
-    const [image,setImage] = useState('');
-    const [brand,setBrand] = useState('');
-    const [category,setCategory] = useState('');
-    const [countInStock,setCountInStock] = useState('');
-    const [description,setDescription] = useState('');
-    const productList = useSelector(state =>state.productList);
-    const {loading,products,error}= productList;
-    const  productSave = useSelector(state => state.productSave);
-    const {loading:loadingSave,success:successSave,errorSave:errorSave}= productSave;
-    const  productDelete= useSelector(state => state.productDelete);
-    const {loading:loadingDelete,success:successDelete,errorSave:errorDelete}= productDelete;
-    const dispatch = useDispatch();
-
-useEffect(() => {
+  useEffect(() => {
     if (successSave) {
-        setModalVisible(false);
-      }
-   dispatch(listProducts());
-    return () => {
-        //
+      setModalVisible(false);
     }
-}, [successSave,successDelete]);
+    dispatch(listProducts());
+    return () => {
+      //
+    };
+  }, [successSave, successDelete]);
 
-const openModal = (product) => {
+  const openModal = (product) => {
     setModalVisible(true);
     setId(product._id);
     setName(product.name);
@@ -43,17 +53,29 @@ const openModal = (product) => {
     setCategory(product.category);
     setCountInStock(product.countInStock);
   };
- 
+
   const deleteHandler = (product) => {
     dispatch(deleteProduct(product._id));
   };
 
-const submitHandler =(e) =>{
+  const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveProduct({_id:id,name,price,image,brand,category,countInStock,description}));
-}
+    dispatch(
+      saveProduct({
+        _id: id,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        countInStock,
+        description,
+      })
+    );
+  };
 
-    return ( <div className="content content-margined">
+  return (
+    <div className="content content-margined">
       <div className="product-header">
         <h3>Products</h3>
         <button className="button primary" onClick={() => openModal({})}>
@@ -101,7 +123,6 @@ const submitHandler =(e) =>{
                   id="image"
                   onChange={(e) => setImage(e.target.value)}
                 ></input>
-                
               </li>
               <li>
                 <label htmlFor="brand">Brand</label>
@@ -144,7 +165,7 @@ const submitHandler =(e) =>{
               </li>
               <li>
                 <button type="submit" className="button primary">
-                  {id ? 'Update' : 'Create'}
+                  {id ? "Update" : "Create"}
                 </button>
               </li>
               <li>
@@ -186,7 +207,7 @@ const submitHandler =(e) =>{
                 <td>
                   <button className="button" onClick={() => openModal(product)}>
                     Edit
-                  </button>{' '}
+                  </button>{" "}
                   <button
                     className="button"
                     onClick={() => deleteHandler(product)}
@@ -200,8 +221,7 @@ const submitHandler =(e) =>{
         </table>
       </div>
     </div>
-    )
+  );
 }
-
 
 export default ProductsScreen;
